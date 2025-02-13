@@ -1,7 +1,6 @@
-"use client"
-
 import { useState } from "react"
 import { BodyPartSelector } from "../components/BodyPartSelector"
+import { EstimateModal } from "../components/EstimateModal"
 
 interface EstimateResult {
   min: number
@@ -105,19 +104,7 @@ export default function PriceEstimate() {
         </button>
       </form>
 
-      {estimate && (
-        <div className="mt-8 p-6 bg-black rounded-lg text-center max-w-2xl mx-auto animate-in slide-in-from-bottom duration-500">
-          <h3 className="text-xl mb-4 text-white font-mono">Estimated Price Range</h3>
-          <p className="text-3xl font-bold text-white font-mono">
-            ${estimate.min} - ${estimate.max}
-          </p>
-          <p className="mt-4 text-sm text-gray-300 font-mono">
-            This is a rough estimate for a tattoo on the {estimate.selectedPart}.
-            <br />
-            Final price may vary based on specific design details and consultation.
-          </p>
-        </div>
-      )}
+      {estimate && <EstimateModal estimate={estimate} onClose={() => setEstimate(null)} />}
     </div>
   )
 }

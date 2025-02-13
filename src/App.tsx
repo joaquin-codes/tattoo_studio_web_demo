@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { MobileMenu } from "./components/MobileMenu"
+import { AdminLogin } from "./components/AdminLogin"
 import Portfolio from "./pages/Portfolio"
 import Schedule from "./pages/Schedule"
 import PriceEstimate from "./pages/PriceEstimate"
+import AdminDashboard from "./pages/AdminDashboard"
 import "./App.css"
 
 function App() {
@@ -37,8 +39,11 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/estimate" element={<PriceEstimate />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
+
+        <AdminLogin />
       </div>
     </Router>
   )

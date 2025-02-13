@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from "react"
 import { Calendar } from "react-calendar"
 import "react-calendar/dist/Calendar.css"
@@ -17,8 +19,18 @@ export default function Schedule() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log({ date, time })
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+
+    const bookingData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      date: date,
+      time: time,
+      notes: formData.get("notes"),
+    }
+
+    alert(JSON.stringify(bookingData, null, 2))
   }
 
   return (
