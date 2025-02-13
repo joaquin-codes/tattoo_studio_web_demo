@@ -1,71 +1,85 @@
-export default function Schedule() {
-  return (
-    <div className="container mx-auto px-4 max-w-2xl">
-      <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">Schedule Appointment</h2>
+import { useState } from "react"
+import { Calendar } from "react-calendar"
+import "react-calendar/dist/Calendar.css"
 
-      <form className="space-y-6">
+type ValuePiece = Date | null
+type Value = ValuePiece | [ValuePiece, ValuePiece]
+
+const TIME_SLOTS = Array.from({ length: 24 }, (_, i) => {
+  const hour = Math.floor(i / 2) + 10
+  const minutes = i % 2 === 0 ? "00" : "30"
+  return `${hour}:${minutes}`
+})
+
+export default function Schedule() {
+  const [date, setDate] = useState<Value>(new Date())
+  const [time, setTime] = useState<string>("")
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission
+    console.log({ date, time })
+  }
+
+  return (
+    <div className="container mx-auto px-4 max-w-2xl py-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center font-mono">Schedule Appointment</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
-          <label htmlFor="name" className="block text-lg">
+          <label htmlFor="name" className="block text-lg font-mono">
             Name
           </label>
-          <input
-            type="text"
-            id="name"
-            className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white"
-            required
-          />
+          <input type="text" id="name" className="w-full p-2 bg-white border border-black font-mono" required />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="email" className="block text-lg">
+          <label htmlFor="email" className="block text-lg font-mono">
             Email
           </label>
-          <input
-            type="email"
-            id="email"
-            className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white"
-            required
-          />
+          <input type="email" id="email" className="w-full p-2 bg-white border border-black font-mono" required />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="date" className="block text-lg">
-            Preferred Date
-          </label>
-          <input
-            type="date"
-            id="date"
-            className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white"
-            required
-          />
+          <label className="block text-lg font-mono">Date</label>
+          <div className="border border-black p-4">
+            <Calendar
+              onChange={setDate}
+              value={date}
+              className="w-full"
+              minDate={new Date()}
+              tileClassName="font-mono"
+            />
+          </div>
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="time" className="block text-lg">
-            Preferred Time
-          </label>
-          <select id="time" className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white" required>
-            <option value="">Select a time</option>
-            <option value="morning">Morning (10:00 - 12:00)</option>
-            <option value="afternoon">Afternoon (13:00 - 17:00)</option>
-            <option value="evening">Evening (18:00 - 20:00)</option>
-          </select>
+          <label className="block text-lg font-mono">Time</label>
+          <div className="grid grid-cols-4 gap-2">
+            {TIME_SLOTS.map((slot) => (
+              <button
+                key={slot}
+                type="button"
+                onClick={() => setTime(slot)}
+                className={`p-2 text-sm border border-black font-mono transition-colors
+                  ${time === slot ? "bg-black text-white" : "hover:bg-black/5"}`}
+              >
+                {slot}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="notes" className="block text-lg">
+          <label htmlFor="notes" className="block text-lg font-mono">
             Additional Notes
           </label>
-          <textarea
-            id="notes"
-            rows={4}
-            className="w-full p-2 bg-gray-900 border border-gray-700 rounded text-white"
-          ></textarea>
+          <textarea id="notes" rows={4} className="w-full p-2 bg-white border border-black font-mono"></textarea>
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 bg-white text-black font-bold rounded hover:bg-gray-200 transition-colors"
+          className="w-full py-3 bg-black text-white font-bold font-mono hover:bg-black/80 transition-colors"
         >
           Request Appointment
         </button>
