@@ -5,6 +5,8 @@ import Portfolio from "./pages/Portfolio"
 import Schedule from "./pages/Schedule"
 import PriceEstimate from "./pages/PriceEstimate"
 import AdminDashboard from "./pages/AdminDashboard"
+import Artists from "./pages/Artists"
+import Chickens from "./pages/Chickens"
 import "./App.css"
 
 function App() {
@@ -18,6 +20,9 @@ function App() {
                 TATTOO STUDIO
               </Link>
               <nav className="hidden md:flex space-x-8">
+                <Link to="/artists" className="hover:text-gray-600 font-mono">
+                  ARTISTS
+                </Link>
                 <Link to="/portfolio" className="hover:text-gray-600 font-mono">
                   WORKS
                 </Link>
@@ -26,6 +31,9 @@ function App() {
                 </Link>
                 <Link to="/estimate" className="hover:text-gray-600 font-mono">
                   ESTIMATE
+                </Link>
+                <Link to="/chickens" className="hover:text-gray-600 font-mono">
+                  🐔
                 </Link>
               </nav>
               <MobileMenu />
@@ -36,10 +44,12 @@ function App() {
         <main className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/artists" element={<Artists />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/estimate" element={<PriceEstimate />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/chickens" element={<Chickens />} />
           </Routes>
         </main>
 
@@ -55,14 +65,14 @@ function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-16">
         <div className="space-y-8">
           <h1 className="text-6xl md:text-8xl font-mono tracking-tighter leading-none">
-            TATTOO
+            DISRUPT
             <br />
-            ARTISTRY
+            STUDIO
           </h1>
           <p className="text-lg font-mono">
-            Traditional & Contemporary
+            Espacio creativo multidisciplinar
             <br />
-            Custom Designs
+            INK. ART. CHIKENS.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4">

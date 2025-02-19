@@ -16,10 +16,10 @@ export default function Home() {
               Portfolio
             </Link>
             <Link href="/schedule" className="nav-link">
-              Schedule
+              Schedule an appointment
             </Link>
             <Link href="/estimate" className="nav-link">
-              Price Estimate
+              Get An Estimate
             </Link>
           </nav>
         </div>

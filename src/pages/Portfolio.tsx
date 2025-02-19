@@ -36,7 +36,7 @@ export default function Portfolio() {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-mono mb-8">WORKS / 作品</h1>
+        <h1 className="text-4xl md:text-6xl font-mono mb-8">PORTAFOLIO</h1>
 
         <div className="flex gap-4 mb-12">
           <button

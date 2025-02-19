@@ -1,5 +1,3 @@
-"use client"
-
 interface EstimateResult {
   min: number
   max: number
