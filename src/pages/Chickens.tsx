@@ -1,5 +1,3 @@
-"use client"
-
 const CHICKEN_EMOJIS = Array(100).fill("🐔")
 
 export default function Chickens() {

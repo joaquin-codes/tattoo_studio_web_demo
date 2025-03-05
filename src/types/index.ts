@@ -2,6 +2,9 @@ export interface Artist {
   id: string
   name: string
   bio: string
+  style: string
+  instagram?: string
+  email?: string
   avatar?: string
 }
 

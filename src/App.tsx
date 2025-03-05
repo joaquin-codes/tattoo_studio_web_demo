@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 import { MobileMenu } from "./components/MobileMenu"
 import { AdminLogin } from "./components/AdminLogin"
-import Portfolio from "./pages/Portfolio"
 import Schedule from "./pages/Schedule"
 import PriceEstimate from "./pages/PriceEstimate"
 import AdminDashboard from "./pages/AdminDashboard"
 import Artists from "./pages/Artists"
-import Chickens from "./pages/Chickens"
+import ArtistDetail from "./pages/ArtistDetail"
 import "./App.css"
 
 function App() {
@@ -23,17 +22,11 @@ function App() {
                 <Link to="/artists" className="hover:text-gray-600 font-mono">
                   ARTISTS
                 </Link>
-                <Link to="/portfolio" className="hover:text-gray-600 font-mono">
-                  WORKS
-                </Link>
                 <Link to="/schedule" className="hover:text-gray-600 font-mono">
                   BOOK
                 </Link>
                 <Link to="/estimate" className="hover:text-gray-600 font-mono">
                   ESTIMATE
-                </Link>
-                <Link to="/chickens" className="hover:text-gray-600 font-mono">
-                  🐔
                 </Link>
               </nav>
               <MobileMenu />
@@ -45,11 +38,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/artists" element={<Artists />} />
-            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/artists/:id" element={<ArtistDetail />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/estimate" element={<PriceEstimate />} />
             <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/chickens" element={<Chickens />} />
           </Routes>
         </main>
 
@@ -65,15 +57,21 @@ function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-16">
         <div className="space-y-8">
           <h1 className="text-6xl md:text-8xl font-mono tracking-tighter leading-none">
-            DISRUPT
+            TATTOO
             <br />
-            STUDIO
+            ARTISTRY
           </h1>
           <p className="text-lg font-mono">
-            Espacio creativo multidisciplinar
+            Traditional & Contemporary
             <br />
-            INK. ART. CHIKENS.
+            Custom Designs
           </p>
+          <Link
+            to="/artists"
+            className="inline-block px-6 py-3 bg-black text-white font-mono hover:bg-black/80 transition-colors"
+          >
+            Meet Our Artists
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <img

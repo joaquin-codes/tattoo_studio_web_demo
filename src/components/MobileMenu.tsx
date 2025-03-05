@@ -19,8 +19,8 @@ export function MobileMenu() {
             <Link to="/" className="text-2xl font-mono hover:text-gray-600" onClick={() => setIsOpen(false)}>
               HOME
             </Link>
-            <Link to="/portfolio" className="text-2xl font-mono hover:text-gray-600" onClick={() => setIsOpen(false)}>
-              WORKS
+            <Link to="/artists" className="text-2xl font-mono hover:text-gray-600" onClick={() => setIsOpen(false)}>
+              ARTISTS
             </Link>
             <Link to="/schedule" className="text-2xl font-mono hover:text-gray-600" onClick={() => setIsOpen(false)}>
               BOOK
